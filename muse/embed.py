@@ -27,15 +27,17 @@ class OllamaEmbedder:
     # nomic-embed-text is trained with task prefixes; omitting them costs recall.
     PREFIX = {"document": "search_document: ", "query": "search_query: "}
 
-    def __init__(self, model: str = "nomic-embed-text", url: str = "http://localhost:11434"):
+    # 127.0.0.1, not localhost: on Windows "localhost" tries IPv6 first and costs ~2s per call.
+    def __init__(self, model: str = "nomic-embed-text", url: str = "http://127.0.0.1:11434"):
         self.model, self.url, self.name = model, url, f"ollama/{model}"
-        r = httpx.post(f"{url}/api/embed", json={"model": model, "input": ["ping"]}, timeout=30)
+        self.client = httpx.Client(timeout=120)
+        r = self.client.post(f"{url}/api/embed", json={"model": model, "input": ["ping"]}, timeout=30)
         r.raise_for_status()  # fail at construction so get_embedder() can fall back
 
     def embed(self, texts: list[str], kind: Kind = "document") -> np.ndarray:
         prefix = self.PREFIX[kind] if "nomic" in self.model else ""
-        r = httpx.post(f"{self.url}/api/embed", timeout=120,
-                       json={"model": self.model, "input": [prefix + t for t in texts]})
+        r = self.client.post(f"{self.url}/api/embed",
+                             json={"model": self.model, "input": [prefix + t for t in texts]})
         r.raise_for_status()
         return _normalise(r.json()["embeddings"])
 
@@ -56,7 +58,7 @@ def get_embedder() -> Embedder:
     if choice in ("auto", "ollama"):
         try:
             return OllamaEmbedder(os.getenv("MUSE_OLLAMA_MODEL", "nomic-embed-text"),
-                                  os.getenv("OLLAMA_URL", "http://localhost:11434"))
+                                  os.getenv("OLLAMA_URL", "http://127.0.0.1:11434"))
         except (httpx.HTTPError, OSError) as e:
             if choice == "ollama":
                 raise

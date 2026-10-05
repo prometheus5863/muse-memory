@@ -1,0 +1,20 @@
+{"q": "Why does sourdough taste sour?", "relevant": ["sourdough.md#Lactic acid bacteria"]}
+{"q": "How do I know when bulk fermentation is done?", "relevant": ["sourdough.md#Bulk fermentation"]}
+{"q": "Which of my ferments rely on lactic acid bacteria?", "relevant": ["sourdough.md#Lactic acid bacteria", "ferments.md#Kimchi", "ferments.md#Yoghurt"]}
+{"q": "What keeps homemade ferments from going bad?", "relevant": ["ferments.md#Fermentation safety", "ferments.md#Kimchi"]}
+{"q": "How do I get fizzy kombucha?", "relevant": ["ferments.md#Kombucha"]}
+{"q": "What temperatures matter when making bread and yoghurt?", "relevant": ["sourdough.md#Bulk fermentation", "sourdough.md#Scoring and baking", "ferments.md#Yoghurt"]}
+{"q": "How does Rust prevent data races without a GC?", "relevant": ["rust.md#Borrowing", "rust.md#Ownership"]}
+{"q": "When do I need explicit lifetime annotations?", "relevant": ["rust.md#Lifetimes"]}
+{"q": "Common mistakes with mutexes in async code", "relevant": ["rust.md#Async"]}
+{"q": "How should I handle concurrent writes in an app database?", "relevant": ["sqlite.md#Single writer", "sqlite.md#WAL mode"]}
+{"q": "Do I need a vector database for embeddings?", "relevant": ["sqlite.md#Storing vectors"]}
+{"q": "How do I check if my query uses an index?", "relevant": ["sqlite.md#Indexes and query plans"]}
+{"q": "What should I eat before and during a marathon?", "relevant": ["running.md#Carb loading", "running.md#Long run"]}
+{"q": "How do I avoid getting injured while building mileage?", "relevant": ["running.md#Injury prevention", "running.md#Easy runs"]}
+{"q": "What happens to fitness during a taper?", "relevant": ["running.md#Tapering"]}
+{"q": "Why start investing early?", "relevant": ["finance.md#Compounding"]}
+{"q": "How often should I rebalance my portfolio?", "relevant": ["finance.md#Asset allocation"]}
+{"q": "What should I do with savings before buying index funds?", "relevant": ["finance.md#Emergency fund", "finance.md#Index funds"]}
+{"q": "How do fees affect long-term returns?", "relevant": ["finance.md#Index funds", "finance.md#Compounding"]}
+{"q": "Things that grow exponentially or double over time", "relevant": ["finance.md#Compounding", "sourdough.md#Starter maintenance"]}
